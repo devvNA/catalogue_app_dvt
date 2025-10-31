@@ -1,10 +1,14 @@
 import 'package:dio/dio.dart';
+
 import '../../../core/constants/app_constants.dart';
 import '../../../core/error/exceptions.dart';
 import '../../models/product_model.dart';
 
 abstract class ProductRemoteDataSource {
-  Future<List<ProductModel>> getProducts({required int page, required int limit});
+  Future<List<ProductModel>> getProducts({
+    required int page,
+    required int limit,
+  });
   Future<ProductModel> getProductById(int id);
   Future<List<ProductModel>> getAllProducts();
 }
@@ -22,21 +26,19 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
     try {
       final response = await dio.get(
         '${AppConstants.baseUrl}/products',
-        queryParameters: {
-          'limit': limit,
-        },
+        queryParameters: {'limit': limit},
       );
 
       if (response.statusCode == 200) {
         final List<dynamic> data = response.data;
         final startIndex = (page - 1) * limit;
         final endIndex = startIndex + limit;
-        
+
         final paginatedData = data.sublist(
           startIndex,
           endIndex > data.length ? data.length : endIndex,
         );
-        
+
         return paginatedData
             .map((json) => ProductModel.fromJson(json))
             .toList();

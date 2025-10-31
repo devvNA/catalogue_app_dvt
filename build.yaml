@@ -1,0 +1,10 @@
+targets:
+  $default:
+    builders:
+      freezed:
+        generate_for:
+          - lib/**/*.dart
+          - test/**/*.dart
+        options:
+          union_key: 'type'
+          union_value_case: 'FreezedUnionCase.pascal'
