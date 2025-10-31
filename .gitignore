@@ -9,7 +9,7 @@
 .buildlog/
 .history
 .svn/
-specs/tech-specs.md
+specs/**
 .swiftpm/
 .vscode/
 migrate_working_dir/
