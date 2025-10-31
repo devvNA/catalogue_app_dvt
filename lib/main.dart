@@ -26,9 +26,10 @@ class MyApp extends StatelessWidget {
         title: 'Product Catalog',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-          useMaterial3: true,
-          appBarTheme: const AppBarTheme(centerTitle: true, elevation: 0),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+          useMaterial3: false,
+          fontFamily: "Poppins",
+          appBarTheme: const AppBarTheme(centerTitle: true),
         ),
         home: const ProductListPage(),
       ),

@@ -5,18 +5,15 @@ class SkeletonProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+    return Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.grey[300],
+                color: Colors.grey[100],
                 borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(12),
                 ),
@@ -32,16 +29,16 @@ class SkeletonProductCard extends StatelessWidget {
                   width: double.infinity,
                   height: 14,
                   decoration: BoxDecoration(
-                    color: Colors.grey[300],
+                    color: Colors.grey[200],
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),
                 const SizedBox(height: 6),
                 Container(
-                  width: 100,
+                  width: 200,
                   height: 14,
                   decoration: BoxDecoration(
-                    color: Colors.grey[300],
+                    color: Colors.grey[200],
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),
@@ -53,7 +50,7 @@ class SkeletonProductCard extends StatelessWidget {
                       width: 60,
                       height: 16,
                       decoration: BoxDecoration(
-                        color: Colors.grey[300],
+                        color: Colors.grey[200],
                         borderRadius: BorderRadius.circular(4),
                       ),
                     ),
@@ -61,7 +58,7 @@ class SkeletonProductCard extends StatelessWidget {
                       width: 36,
                       height: 36,
                       decoration: BoxDecoration(
-                        color: Colors.grey[300],
+                        color: Colors.grey[200],
                         shape: BoxShape.circle,
                       ),
                     ),

@@ -69,10 +69,11 @@ class _ProductListPageState extends State<ProductListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFFCFCFC),
       appBar: AppBar(
         title: const Text(
           'MyCatalogues',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
         centerTitle: true,
         actions: [
@@ -81,7 +82,7 @@ class _ProductListPageState extends State<ProductListPage> {
               int itemCount = 0;
               state.maybeWhen(
                 loaded: (items) {
-                  itemCount = items.length;
+                  itemCount = items.fold(0, (sum, item) => sum + item.quantity);
                 },
                 orElse: () {},
               );
@@ -90,9 +91,7 @@ class _ProductListPageState extends State<ProductListPage> {
                 children: [
                   IconButton(
                     icon: const Icon(Icons.shopping_cart_outlined),
-                    onPressed: () {
-                      // Navigate to cart page (to be implemented)
-                    },
+                    onPressed: () {},
                   ),
                   if (itemCount > 0)
                     Positioned(
@@ -101,12 +100,12 @@ class _ProductListPageState extends State<ProductListPage> {
                       child: Container(
                         padding: const EdgeInsets.all(4),
                         decoration: const BoxDecoration(
-                          color: Colors.blue,
+                          color: Colors.red,
                           shape: BoxShape.circle,
                         ),
                         constraints: const BoxConstraints(
-                          minWidth: 18,
-                          minHeight: 18,
+                          minWidth: 16,
+                          minHeight: 16,
                         ),
                         child: Text(
                           itemCount.toString(),
@@ -170,6 +169,7 @@ class _ProductListPageState extends State<ProductListPage> {
                           message: 'No products available',
                         );
                       }
+
                       return _buildProductGrid(
                         products,
                         hasReachedMax: hasReachedMax,

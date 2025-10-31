@@ -7,17 +7,12 @@ import '../bloc/cart/cart_event.dart';
 class ProductDetailPage extends StatelessWidget {
   final Product product;
 
-  const ProductDetailPage({
-    super.key,
-    required this.product,
-  });
+  const ProductDetailPage({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Product Detail'),
-      ),
+      appBar: AppBar(title: const Text('Product Detail')),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +32,7 @@ class ProductDetailPage extends StatelessWidget {
                       child: CircularProgressIndicator(
                         value: loadingProgress.expectedTotalBytes != null
                             ? loadingProgress.cumulativeBytesLoaded /
-                                loadingProgress.expectedTotalBytes!
+                                  loadingProgress.expectedTotalBytes!
                             : null,
                       ),
                     ),
@@ -74,7 +69,7 @@ class ProductDetailPage extends StatelessWidget {
                       product.category.toUpperCase(),
                       style: const TextStyle(fontSize: 12),
                     ),
-                    backgroundColor: Colors.blue[100],
+                    backgroundColor: Colors.indigo[100],
                   ),
                   const SizedBox(height: 16),
                   Row(
@@ -84,7 +79,7 @@ class ProductDetailPage extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
-                          color: Colors.blue,
+                          color: Colors.indigo,
                         ),
                       ),
                       const Spacer(),
@@ -113,18 +108,12 @@ class ProductDetailPage extends StatelessWidget {
                   const SizedBox(height: 24),
                   const Text(
                     'Description',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     product.description,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      height: 1.5,
-                    ),
+                    style: const TextStyle(fontSize: 16, height: 1.5),
                   ),
                   const SizedBox(height: 100),
                 ],
@@ -150,17 +139,12 @@ class ProductDetailPage extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                context.read<CartBloc>().add(
-                      CartEvent.addToCart(product.id),
-                    );
+                context.read<CartBloc>().add(CartEvent.addToCart(product.id));
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('${product.title} added to cart'),
                     duration: const Duration(seconds: 2),
-                    action: SnackBarAction(
-                      label: 'OK',
-                      onPressed: () {},
-                    ),
+                    action: SnackBarAction(label: 'OK', onPressed: () {}),
                   ),
                 );
               },
@@ -172,10 +156,7 @@ class ProductDetailPage extends StatelessWidget {
               ),
               child: const Text(
                 'Add to Cart',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
           ),
